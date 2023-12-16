@@ -24,7 +24,7 @@
               <video id="video" playsinline autoplay style="width: 1px;"></video>
               <button class="btn btn-primary mb-2" id="cambiar-camara" onclick="cambiarCamara();">Cambiar camara</button>
               <canvas id="canvas" width="400" height="400" style="max-width: 100%;"></canvas>
-              <canvas id="otrocanvas" width="150" height="150" style="display: none"></canvas>
+              <canvas id="otrocanvas" width="150" height="150"></canvas>
               <div id="resultado" style="border: 1px solid black; width: 100px; height: 50px; 
               display: flex; align-items: center; justify-content: center;">Hola</div>     
             </div>
@@ -131,11 +131,11 @@
   
       function predecir() {
         if (modelo != null) {
-          resample_single(canvas, 100, 100, otrocanvas);
+          resample_single(canvas, 120, 120, otrocanvas);
   
           //Hacer la predicción
           var ctx2 = otrocanvas.getContext("2d");
-          var imgData = ctx2.getImageData(0,0, 100, 100);
+          var imgData = ctx2.getImageData(0,0, 120, 120);
   
           var arr = [];
           var arr100 = [];
@@ -148,7 +148,7 @@
             var gris = (rojo+verde+azul)/3;
   
             arr100.push([gris]);
-            if (arr100.length == 100) {
+            if (arr100.length == 120) {
               arr.push(arr100);
               arr100 = [];
             }
